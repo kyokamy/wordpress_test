@@ -1,39 +1,17 @@
-# WWD
+# docker command test
 
-"Wordpress + WP CLI", "Woocommerce" , "Mysql" and "phpMyAdmin" with Docker 
+`docker run --name wordpress -d -p 80:80 wordpress`
 
- # Prerequisites 
-	
-* [Docker](https://docs.docker.com/engine/installation/) + [compose](https://docs.docker.com/compose/install/)
-	
-* [node](https://nodejs.org/en/download/) + [npm](https://docs.npmjs.com/getting-started/installing-node) + [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) and [chromedriver](https://www.npmjs.com/package/chromedriver) 
 
-Download and Unzip the package which contain the following files :
+```bash
+docker run --name mysql -e MYSQL_ROOT_PASSWORD=kyokamy -e MYSQL_DATABASE=wordpress -p 3306:3306 -d mysql
 
-* **docker-compose.yml** - Deploy 3 containers "Wordpress, MySql, phpMyAdmin"
 
-* **Configuration_wordpress.sh** - Install WP-CLI and Woocomerce in the wordpress container
+Get ip localhost
+docker container inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q) // docker-ip
 
-* **script/** - Scripts used by "Configuration_wordpress.sh"
+Docker-compose//
+docker-compose up -d //lancer en background
+docker-compose up -it //mode interactif
+docker-compose stop```
 
-* **trad/** - Folder for translate Woocomerce in french 
-
-* **node_module** - Folder which contain needed node modules
-
-* **pre_remplissage.js** - Auto complete wordpress install
-
-## How it works ! 
-
-1 - Launch the containers with compose
-
-	docker-compose up -d
-
-2 - Complete install wordpress at http://localhost
-
-3 - Install WP-CLI and Woocommerce then translate it to french language
-
-	./Configuration_Wordpress.sh
-
-———————
-
-Enjoy !!!

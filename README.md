@@ -22,7 +22,7 @@ Download and Unzip the package which contain the following files :
 
 * **pre_remplissage.js** - Auto complete wordpress install
 
-# How it works ! 
+## How it works ! 
 
 1 - Launch the containers with compose
 

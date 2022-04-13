@@ -2,6 +2,7 @@ services:
   wordpress:
     image: wordpress
     container_name: wordpress
+    restart: always
     ports:
       - 80:80
     environment:
@@ -9,8 +10,10 @@ services:
         WORDPRESS_DB_USER: my_username
         WORDPRESS_DB_PASSWORD: my_password
         WORDPRESS_DB_NAME: wordpress
+        UPLOAD_LIMIT: 512M
     volumes:
       - ./wordpress_data:/var/www/html
+      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   db:
     image: mysql

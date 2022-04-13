@@ -6,7 +6,7 @@ services:
     depends_on:
       - db
     ports:
-      - 80:80
+      - 8081:80
     environment:
         WORDPRESS_DB_HOST: db
         WORDPRESS_DB_USER: my_username
@@ -24,8 +24,8 @@ services:
         MYSQL_USER: my_username
         MYSQL_PASSWORD: my_password
         MYSQL_RANDOM_ROOT_PASSWORD: '1'
-#    volumes:
-#      - ./wordpress_db:/var/lib/mysql
+    volumes:
+      - ./wordpress_db:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

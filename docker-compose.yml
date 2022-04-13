@@ -3,6 +3,8 @@ services:
     image: wordpress
     container_name: wordpress
     restart: always
+    depends_on:
+      - db
     ports:
       - 80:80
     environment:
@@ -22,6 +24,8 @@ services:
         MYSQL_USER: my_username
         MYSQL_PASSWORD: my_password
         MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - ./wordpress_db:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
